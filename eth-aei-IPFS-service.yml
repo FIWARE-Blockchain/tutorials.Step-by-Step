@@ -90,14 +90,13 @@ services:
       - DLT_TYPE=eth
       - RPC_ENDPOINT=http://ganache-cli:8545
       - DEFAULT_GAS=3000000
-      - AEI_CONTRACT_MODE=true
-      - CONTRACT_ADDRESS=0x838675600A482eee6a0Ed536285a32174397655e
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
       - STORAGE_TYPE=ipfs
       - IPFS_HOST=ipfs.infura.io
       - IPFS_PORT=5001
       - IPFS_PROTOCOL=https
-      - IOTAMAM_HOST=https://nodes.devnet.iota.org
-      - IOTAMAM_MODE=public
+      # - IPFS_AUTH_CODE='' # IPFS Bearer ACCESS TOKEN (if needed)
+
     healthcheck:
       interval: 5s
 

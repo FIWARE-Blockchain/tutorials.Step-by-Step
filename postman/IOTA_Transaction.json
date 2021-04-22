@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "3e98764f-a5e0-4aee-bc1c-fd3616c60a89",
+		"name": "CanisMajor-IOTA-Tx",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate Access Token from KeyRock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dHV0b3JpYWwtZGNrci1zaXRlLTAwMDAteHByZXNzd2ViYXBwOnR1dG9yaWFsLWRja3Itc2l0ZS0wMDAwLWNsaWVudHNlY3JldA",
+						"description": "base64 concatenation of Client Id and Client Secret",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "username=alice-the-admin@test.com&password=test&grant_type=password"
+				},
+				"url": {
+					"raw": "http://localhost:3005/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PEP Proxy - Create Entry and Persist Asset in IOTA as Transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "Get this token from keyrock",
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "b328530fe9b39557ff44863bfc0a45198d33cc6a"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/ld+json"
+					},
+					{
+						"description": "base64 concatenation of Public Address and Wallet Seed of IOTA Account",
+						"key": "DLT-Token",
+						"type": "text",
+						"value": "SEVRTE9XT1JMREhFTExPV09STERIRUxMT1dPUkxESEVMTE9XT1JMREhFTExPV09STERIRUxMT1dPUkxESEVMTE9XT1JMREhFTExPV09SOTlEOlBVRU9UU0VJVEZFVkVXQ1dCVFNJWk05TktSR0pFSU1YVFVMQkFDR0ZSUUs5SU1HSUNMQktXOVRURVZTRFFNR1dLQlhQVkNCTU1DWFdNTlBEWA"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store1\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1027",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PEP Proxy - Create Entry and Persist Asset in IOTA as Transaction By Specific Keys to be store in DLT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "Get this token from keyrock",
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "b328530fe9b39557ff44863bfc0a45198d33cc6a"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/ld+json"
+					},
+					{
+						"description": "base64 concatenation of Public Address and Wallet Seed of IOTA Account",
+						"key": "DLT-Token",
+						"type": "text",
+						"value": "SEVRTE9XT1JMREhFTExPV09STERIRUxMT1dPUkxESEVMTE9XT1JMREhFTExPV09STERIRUxMT1dPUkxESEVMTE9XT1JMREhFTExPV09SOTlEOlBVRU9UU0VJVEZFVkVXQ1dCVFNJWk05TktSR0pFSU1YVFVMQkFDR0ZSUUs5SU1HSUNMQktXOVRURVZTRFFNR1dLQlhQVkNCTU1DWFdNTlBEWA"
+					},
+					{
+						"description": "Value to be persist",
+						"key": "ctx_map",
+						"type": "text",
+						"value": "address,category"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store2\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1027",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PEP Proxy - Get Entity",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "b328530fe9b39557ff44863bfc0a45198d33cc6a"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store355\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1027/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1027",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities",
+						"urn:ngsi-ld:Building:store2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orion-LD Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1026/version",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Canis Major version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/version",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"version"
+					]
+				},
+				"description": "Version of canismajor adaptor"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Entities from Canis Major",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/entity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"entity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Entity By Id from Canis Major",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/entity/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"entity",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Entities by Query from Canis Major",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/entity?entityId=urn:ngsi-ld:Building:store2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"entity"
+					],
+					"query": [
+						{
+							"key": "entityId",
+							"value": "urn:ngsi-ld:Building:store2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get from IOTATx (method is not stable yet but transactions can be checked in Tx Explorer)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/iotaTx/MKPEDHLUOMLBEM9GYU9USNULD9BJEANMYQZP9SDHTONRKCGKGPQKC9MHOWQGOXNACABAGMIARFWIUG999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"iotaTx",
+						"MKPEDHLUOMLBEM9GYU9USNULD9BJEANMYQZP9SDHTONRKCGKGPQKC9MHOWQGOXNACABAGMIARFWIUG999"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
