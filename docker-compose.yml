@@ -1,0 +1,142 @@
+version: '3.5'
+services:
+
+  orion:
+    image: fiware/orion-ld:0.7.0
+    hostname: orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    ports:
+      - "1026:1026" # localhost:1026
+    command: -dbhost mongo-db -logLevel DEBUG -forwarding
+    healthcheck:
+      # test: curl --fail -s http://orion:$1026/version || exit 1
+      interval: 5s
+
+  keyrock:
+    image: fiware/idm:7.9.2
+    container_name: fiware-keyrock
+    hostname: keyrock
+    depends_on:
+      - mysql-db
+    ports:
+      - "3005:3005" # localhost:3005
+      - "3443:3443" # localhost:3443
+    environment:
+      - "DEBUG=idm:*"
+      - "IDM_DB_HOST=mysql-db"
+      - "IDM_DB_PASS=secret"
+      - "IDM_DB_USER=root"
+      - "IDM_PORT=3005"
+      - "IDM_HOST=http://localhost:3005"
+      - "IDM_HTTPS_ENABLED=false"
+      - "IDM_HTTPS_PORT=3443"
+      - IDM_ADMIN_USER=alice
+      - IDM_ADMIN_EMAIL=alice-the-admin@test.com
+      - IDM_ADMIN_PASS=test
+    healthcheck:
+      interval: 5s
+  # PEP Proxy for Orion
+  orion-proxy:
+    build:
+      context: https://github.com/FIWARE-Blockchain/fiware-pep-proxy.git
+    container_name: fiware-pep-proxy-extended
+    hostname: orion-proxy
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "1027:1027" # localhost:1027
+    expose:
+      - "1027"
+    depends_on: 
+      - keyrock
+    environment:
+      - DEBUG=pep-proxy:*
+      - PEP_PROXY_DEBUG=true
+      - PEP_PROXY_APP_HOST=orion
+      - PEP_PROXY_APP_PORT=1026
+      - PEP_PROXY_PORT=1027
+      - PEP_PROXY_IDM_HOST=keyrock
+      - PEP_PROXY_HTTPS_ENABLED=false
+      - PEP_PROXY_AUTH_ENABLED=false
+      - PEP_PROXY_IDM_SSL_ENABLED=false
+      - PEP_PROXY_IDM_PORT=3005
+      - PEP_PROXY_APP_ID=tutorial-dckr-site-0000-xpresswebapp
+      - PEP_PROXY_USERNAME=pep_proxy_00000000-0000-0000-0000-000000000000
+      - PEP_PASSWORD=test
+      - PEP_PROXY_PDP=idm
+      - PEP_PROXY_MAGIC_KEY=1234
+      - PEP_PROXY_PUBLIC_PATHS=/version
+      - CANIS_MAJOR_URL=http://canismajor:4000
+
+  canismajor:
+    build:
+      context: https://github.com/FIWARE-Blockchain/CanisMajor.git
+    container_name: fiware-canismajor
+    hostname: canismajor
+    depends_on: 
+      mysql-db:
+        condition: service_started
+    ports:
+      - '4000:4000'
+    environment: 
+      - NODE_ENV=development
+      - DB_HOST=mysql-db
+      - DB_NAME=cm
+      - DB_USERNAME=root
+      - DB_PASSWORD=secret
+      - DLT_TYPE=eth
+      - RPC_ENDPOINT=http://ganache-cli:8545
+      - DEFAULT_GAS=3000000
+      - AEI_CONTRACT_MODE=true
+      - CONTRACT_ADDRESS=0x838675600A482eee6a0Ed536285a32174397655e
+      - STORAGE_TYPE=ipfs
+      - IPFS_HOST=ipfs.infura.io
+      - IPFS_PORT=5001
+      - IPFS_PROTOCOL=https
+      - IOTAMAM_HOST=https://nodes.devnet.iota.org
+      - IOTAMAM_MODE=public
+    healthcheck:
+      interval: 5s
+
+  mysql-db:
+    restart: always
+    image: mysql:5.7
+    hostname: mysql-db
+    container_name: db-mysql
+    expose:
+      - '3306'
+    ports:
+      - '3306:3306'
+    environment:
+      # Development use only
+      # Use Docker Secrets for Sensitive Data
+      - 'MYSQL_ROOT_PASSWORD=secret'
+    volumes:
+      - mysql-db:/var/lib/mysql
+      # - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./mysql_data:/docker-entrypoint-initdb.d/:ro
+        
+  # Databases
+  mongo-db:
+    image: mongo:4.4
+    hostname: mongo-db
+    container_name: db-mongo
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017" # localhost:27017
+    networks:
+      - default
+    volumes:
+      - mongo-db:/data
+    healthcheck:
+      test: |
+        host=`hostname --ip-address || echo '127.0.0.1'`; 
+        mongo --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1  
+volumes:
+  mysql-db: ~
+  mongo-db: ~
+  

@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+    aei-contract:
+        build:
+            context: https://github.com/FIWARE-Blockchain/AEIContract.git
+            args:
+                RPC_ENDPOINT: ganache-cli
+                RPC_PORT: 8545
+        command: bash -c "truffle migrate"
+        depends_on: 
+            - ganache-cli
+
+    ganache-cli:
+        image: trufflesuite/ganache-cli:latest
+        ports:
+            - "8545:8545"
+        command: "ganache-cli \
+                --hostname '0.0.0.0' \
+                --db=/ganache_data \
+                --mnemonic 'minimum symptom minute gloom tragic situate silver mechanic salad amused elite beef' \
+                --account '0x6e8f202ae50d774850d0678fb83a730e501ada8d2a6cda5851cdb42b27a4f45b, 100000000000000000000' \ 
+                --account '0x4410685860d7a40d117bff4f75879cf76a632e2503dd305bb67a48c985412346, 100000000000000000000' \ 
+                --account '0x8066b3a791a9e920bd4932dea859f4bfc738ec82f5df060521f15caf7eee2749, 100000000000000000000' \ 
+                --account '0x4b45f2c72b3951653617733a38b97ce4e11578e24f13524433219ae4d377dbed, 100000000000000000000' \ 
+                "
+                #0x3423f4d100f8646aaF6829cE32Cf801996f7007B
+                #0x609A10e108B61786E1a1F6Dae2A90694e1ab8Aa3
+                #0x16994785552C97cABfE64c06Bf1611aa5e864Be0
+                #0xa96feB064c1b5AC996D17e8Ec1Ee635B40f131B4
+        volumes:
+            - ./ganache_data:/ganache_data
+
+volumes:
+    mysql-db: ~
