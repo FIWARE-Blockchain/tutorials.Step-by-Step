@@ -89,16 +89,6 @@ services:
       - DB_USERNAME=root
       - DB_PASSWORD=secret
       - DLT_TYPE=iota
-      - RPC_ENDPOINT=http://ganache-cli:8545
-      - DEFAULT_GAS=3000000
-      - AEI_CONTRACT_MODE=true
-      - CONTRACT_ADDRESS=0x838675600A482eee6a0Ed536285a32174397655e
-      - STORAGE_TYPE=ipfs
-      - IPFS_HOST=ipfs.infura.io
-      - IPFS_PORT=5001
-      - IPFS_PROTOCOL=https
-      - IOTAMAM_HOST=https://nodes.devnet.iota.org
-      - IOTAMAM_MODE=public
       - IOTA_ENDPOINT=https://nodes.devnet.iota.org:443
     healthcheck:
       interval: 5s
