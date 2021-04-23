@@ -83,6 +83,7 @@ services:
       - '4000:4000'
     environment: 
       - NODE_ENV=development
+      - CM_PORT=4000
       - DB_HOST=mysql-db
       - DB_NAME=cm
       - DB_USERNAME=root
@@ -96,7 +97,6 @@ services:
       - IPFS_PORT=5001
       - IPFS_PROTOCOL=https
       # - IPFS_AUTH_CODE='' # IPFS Bearer ACCESS TOKEN (if needed)
-
     healthcheck:
       interval: 5s
 

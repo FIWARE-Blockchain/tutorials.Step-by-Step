@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "d2438d77-6d2d-43e0-952c-db04b253020c",
-		"name": "CanisMajor-Ethereum-AEIContract-IOTAMaM",
+		"_postman_id": "4563d146-0b69-4d14-99d3-0c3a8100f13e",
+		"name": "CanisMajor-Ethereum-AEIContract-IPFS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -47,7 +47,7 @@
 			"response": []
 		},
 		{
-			"name": "PEP Proxy - Create Entry and Persist Asset in IOTA as Transaction",
+			"name": "PEP Proxy - Create Entry and Persist Asset in IPFS as Transaction",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -55,7 +55,7 @@
 						"description": "Get this token from keyrock",
 						"key": "X-Auth-Token",
 						"type": "text",
-						"value": "118922dff3c9db742edae68da17ea129fba1f8cd"
+						"value": "18927753224a88da7acea7017a2b5e395fe5d4fb"
 					},
 					{
 						"key": "Content-Type",
@@ -71,7 +71,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store10\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store7\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
 				},
 				"url": {
 					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
@@ -91,7 +91,7 @@
 			"response": []
 		},
 		{
-			"name": "PEP Proxy - Create Entry and Persist Asset in IOTA as Transaction By Specific Keys to be store in DLT",
+			"name": "PEP Proxy - Create Entry and Persist Asset in IPFS as Transaction By Specific Keys to be store in DLT",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -99,7 +99,7 @@
 						"description": "Get this token from keyrock",
 						"key": "X-Auth-Token",
 						"type": "text",
-						"value": "118922dff3c9db742edae68da17ea129fba1f8cd"
+						"value": "18927753224a88da7acea7017a2b5e395fe5d4fb"
 					},
 					{
 						"key": "Content-Type",
@@ -121,7 +121,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store11\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store8\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
 				},
 				"url": {
 					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
@@ -244,7 +244,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/entity/8",
+					"raw": "http://localhost:4000/entity/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -252,7 +252,7 @@
 					"port": "4000",
 					"path": [
 						"entity",
-						"8"
+						"4"
 					]
 				}
 			},
@@ -289,7 +289,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/entity/8/dlt",
+					"raw": "http://localhost:4000/entity/7/dlt",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -297,7 +297,7 @@
 					"port": "4000",
 					"path": [
 						"entity",
-						"8",
+						"7",
 						"dlt"
 					]
 				}
@@ -305,20 +305,20 @@
 			"response": []
 		},
 		{
-			"name": "Get Data from IOTAMaM",
+			"name": "Get Data from IPFS Node",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/iotaMaM/QIUEE9PQUQWYPDFRWEAPMSOCWGVOQEIZQ9HVRWJMVACMGSCENHV9ZKJXXVXCRPJYJXTRZXFOSNAUAGECZ",
+					"raw": "http://localhost:4000/ipfs/zdpuB1xDxALK8nYKrpdB2zkHvutbrNPxK7wMGkvh1wDAjtLX2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"iotaMaM",
-						"QIUEE9PQUQWYPDFRWEAPMSOCWGVOQEIZQ9HVRWJMVACMGSCENHV9ZKJXXVXCRPJYJXTRZXFOSNAUAGECZ"
+						"ipfs",
+						"zdpuB1xDxALK8nYKrpdB2zkHvutbrNPxK7wMGkvh1wDAjtLX2"
 					]
 				}
 			},

@@ -83,6 +83,7 @@ services:
       - '4000:4000'
     environment: 
       - NODE_ENV=development
+      - CM_PORT=4000
       - DB_HOST=mysql-db
       - DB_NAME=cm
       - DB_USERNAME=root
@@ -95,7 +96,6 @@ services:
       - STORAGE_TYPE=iota
       - IOTAMAM_HOST=https://nodes.devnet.iota.org
       - IOTAMAM_MODE=public # private not supported yet
-
     healthcheck:
       interval: 5s
 

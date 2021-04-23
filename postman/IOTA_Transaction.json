@@ -55,7 +55,7 @@
 						"description": "Get this token from keyrock",
 						"key": "X-Auth-Token",
 						"type": "text",
-						"value": "b328530fe9b39557ff44863bfc0a45198d33cc6a"
+						"value": "2782fc1553f0d66fee5a71e325e05096bb6d2158"
 					},
 					{
 						"key": "Content-Type",
@@ -71,7 +71,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store1\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store15\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
 				},
 				"url": {
 					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
@@ -244,7 +244,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/entity/1",
+					"raw": "http://localhost:4000/entity/12",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -252,7 +252,7 @@
 					"port": "4000",
 					"path": [
 						"entity",
-						"1"
+						"12"
 					]
 				}
 			},
@@ -289,7 +289,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/iotaTx/MKPEDHLUOMLBEM9GYU9USNULD9BJEANMYQZP9SDHTONRKCGKGPQKC9MHOWQGOXNACABAGMIARFWIUG999",
+					"raw": "http://localhost:4000/iotaTx/RSROIHKSGBZSLTILOJDGVAPIXTEEAWIERXWEWYUKJCIDZDEHBZBVTWUJJAJPIQRCUSQMBKOPDGPGXV999",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -297,7 +297,7 @@
 					"port": "4000",
 					"path": [
 						"iotaTx",
-						"MKPEDHLUOMLBEM9GYU9USNULD9BJEANMYQZP9SDHTONRKCGKGPQKC9MHOWQGOXNACABAGMIARFWIUG999"
+						"RSROIHKSGBZSLTILOJDGVAPIXTEEAWIERXWEWYUKJCIDZDEHBZBVTWUJJAJPIQRCUSQMBKOPDGPGXV999"
 					]
 				}
 			},
