@@ -114,7 +114,6 @@ services:
       - 'MYSQL_ROOT_PASSWORD=secret'
     volumes:
       - mysql-db:/var/lib/mysql
-      # - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
       - ./mysql_data:/docker-entrypoint-initdb.d/:ro
         
   # Databases

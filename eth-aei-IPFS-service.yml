@@ -89,6 +89,7 @@ services:
       - DB_USERNAME=root
       - DB_PASSWORD=secret
       - DLT_TYPE=eth
+      - AEI_CONTRACT_MODE=true
       - RPC_ENDPOINT=http://ganache-cli:8545
       - DEFAULT_GAS=3000000
       - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}

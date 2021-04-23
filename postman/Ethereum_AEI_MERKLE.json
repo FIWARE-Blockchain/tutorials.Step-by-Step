@@ -91,56 +91,6 @@
 			"response": []
 		},
 		{
-			"name": "PEP Proxy - Create Entry and Persist Asset in MerkleTree as Transaction By Specific Keys to be store in DLT",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"description": "Get this token from keyrock",
-						"key": "X-Auth-Token",
-						"type": "text",
-						"value": "5381786508c381ba421b63e3022dd570ce3d7d75"
-					},
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/ld+json"
-					},
-					{
-						"description": "base64 concatenation of Public Address and Private Key",
-						"key": "DLT-Token",
-						"type": "text",
-						"value": "MHgzNDIzZjRkMTAwZjg2NDZhYUY2ODI5Y0UzMkNmODAxOTk2ZjcwMDdCOjB4NmU4ZjIwMmFlNTBkNzc0ODUwZDA2NzhmYjgzYTczMGU1MDFhZGE4ZDJhNmNkYTU4NTFjZGI0MmIyN2E0ZjQ1Yg"
-					},
-					{
-						"description": "Value to be persist",
-						"key": "ctx_map",
-						"type": "text",
-						"value": "address,category"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store13\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
-				},
-				"url": {
-					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1027",
-					"path": [
-						"ngsi-ld",
-						"v1",
-						"entities",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "PEP Proxy - Get Entity",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true

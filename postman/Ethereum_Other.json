@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "4faeced5-b7d1-4cd5-9cfd-c4e7f5b2e3c8",
+		"name": "CanisMajor-Other-Contract",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cm",
+			"item": [
+				{
+					"name": "Canis Major version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/version",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"version"
+							]
+						},
+						"description": "Version of canismajor adaptor"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contextType\": \"AgriProductType\",\n    \"contextMapping\": {\n        \"set\": [\"id\"]\n        },\n    \"metadata\": {\n        \"abi\": [\n            {\n                \"constant\": false,\n                \"inputs\": [\n                    {\n                    \"internalType\": \"string\",\n                    \"name\": \"x\",\n                    \"type\": \"string\"\n                    }\n                ],\n                \"name\": \"set\",\n                \"outputs\": [],\n                \"payable\": false,\n                \"stateMutability\": \"nonpayable\",\n                \"type\": \"function\"\n            }\n        ],\n        \"contractAddress\": \"0xdA80D99760352D7463082736e3030CA2288FF5D4\"\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Config by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/config/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"config",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Entities from Canis Major",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/entity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"entity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Entity By Id from Canis Major",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/entity/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"entity",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Entities by Query from Canis Major",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/entity?entityId=urn:ngsi-ld:Building:store2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"entity"
+							],
+							"query": [
+								{
+									"key": "entityId",
+									"value": "urn:ngsi-ld:Building:store2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generate Access Token from KeyRock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dHV0b3JpYWwtZGNrci1zaXRlLTAwMDAteHByZXNzd2ViYXBwOnR1dG9yaWFsLWRja3Itc2l0ZS0wMDAwLWNsaWVudHNlY3JldA",
+						"description": "base64 concatenation of Client Id and Client Secret",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "username=alice-the-admin@test.com&password=test&grant_type=password"
+				},
+				"url": {
+					"raw": "http://localhost:3005/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PEP Proxy - Create Entry and Persist Asset in your contract ABI as Transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "Get this token from keyrock",
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "cc55dc6a4cba90839d353e49b666945cf72e8e4c"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/ld+json"
+					},
+					{
+						"description": "base64 concatenation of Public Address and Private Key",
+						"key": "DLT-Token",
+						"type": "text",
+						"value": "MHgzNDIzZjRkMTAwZjg2NDZhYUY2ODI5Y0UzMkNmODAxOTk2ZjcwMDdCOjB4NmU4ZjIwMmFlNTBkNzc0ODUwZDA2NzhmYjgzYTczMGU1MDFhZGE4ZDJhNmNkYTU4NTFjZGI0MmIyN2E0ZjQ1Yg"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store10\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1027/ngsi-ld/v1/entities/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1027",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PEP Proxy - Get Entity",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "c099607c03f2c480ce887fe6bed51ab12ea21e1e"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:Building:store355\",\n    \"type\": \"AgriProductType\",\n    \"category\": {\n    \t\"type\": \"Property\",\n        \"value\": [\"commercial\"]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"streetAddress\": \"Bornholmer Straße 65\",\n            \"addressRegion\": \"Berlin\",\n            \"addressLocality\": \"Prenzlauer Berg\",\n            \"postalCode\": \"10439\"\n        },\n        \"verified\": {\n\t\t\t\"type\": \"Property\",\n\t\t\t\"value\": true\n\t\t}\n    },\n    \"@context\": [\n        \"https://fiware.github.io/data-models/context.jsonld\",\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1027/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1027",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities",
+						"urn:ngsi-ld:Building:store2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orion-LD Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1026/version",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
