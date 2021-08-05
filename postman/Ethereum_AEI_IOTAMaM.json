@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d2438d77-6d2d-43e0-952c-db04b253020c",
+		"_postman_id": "65596e21-7694-4263-99c1-f4a3aea9286e",
 		"name": "CanisMajor-Ethereum-AEIContract-IOTAMaM",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -47,6 +47,47 @@
 			"response": []
 		},
 		{
+			"name": "Generate DLT Token from CanisMajor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dHV0b3JpYWwtZGNrci1zaXRlLTAwMDAteHByZXNzd2ViYXBwOnR1dG9yaWFsLWRja3Itc2l0ZS0wMDAwLWNsaWVudHNlY3JldA",
+						"description": "base64 concatenation of Client Id and Client Secret",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"public_key\": \"0x3423f4d100f8646aaF6829cE32Cf801996f7007B\",\n    \"private_key\": \"0x6e8f202ae50d774850d0678fb83a730e501ada8d2a6cda5851cdb42b27a4f45b\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "PEP Proxy - Create Entry and Persist Asset in IOTA as Transaction",
 			"request": {
 				"method": "POST",
@@ -63,10 +104,9 @@
 						"value": "application/ld+json"
 					},
 					{
-						"description": "base64 concatenation of Public Address and Private Key",
 						"key": "DLT-Token",
 						"type": "text",
-						"value": "MHgzNDIzZjRkMTAwZjg2NDZhYUY2ODI5Y0UzMkNmODAxOTk2ZjcwMDdCOjB4NmU4ZjIwMmFlNTBkNzc0ODUwZDA2NzhmYjgzYTczMGU1MDFhZGE4ZDJhNmNkYTU4NTFjZGI0MmIyN2E0ZjQ1Yg"
+						"value": "650da54a04ed2d13f638ed3d1da325db934a34ecedf93d7e54b7a8fcbf404064737396977b51e4173a2da1ba176c82a8a345d78123f5f8c3e42afbaafcb9055bed0499ef8dbf4a65d6b82b73cf9ea8e01dec3f303ce9c89f03836614ab24e5fece741f6815c761e1739b4d90b0475b96d991709b3345731c3b3233db6970219e975470b780f885cf84aa12170b71e3bfff891e5f"
 					}
 				],
 				"body": {
@@ -110,7 +150,7 @@
 						"description": "base64 concatenation of Public Address and Private Key",
 						"key": "DLT-Token",
 						"type": "text",
-						"value": "MHgzNDIzZjRkMTAwZjg2NDZhYUY2ODI5Y0UzMkNmODAxOTk2ZjcwMDdCOjB4NmU4ZjIwMmFlNTBkNzc0ODUwZDA2NzhmYjgzYTczMGU1MDFhZGE4ZDJhNmNkYTU4NTFjZGI0MmIyN2E0ZjQ1Yg"
+						"value": "650da54a04ed2d13f638ed3d1da325db934a34ecedf93d7e54b7a8fcbf404064737396977b51e4173a2da1ba176c82a8a345d78123f5f8c3e42afbaafcb9055bed0499ef8dbf4a65d6b82b73cf9ea8e01dec3f303ce9c89f03836614ab24e5fece741f6815c761e1739b4d90b0475b96d991709b3345731c3b3233db6970219e975470b780f885cf84aa12170b71e3bfff891e5f"
 					},
 					{
 						"description": "Value to be persist",

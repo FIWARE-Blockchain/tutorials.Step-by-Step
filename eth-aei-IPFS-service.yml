@@ -73,7 +73,7 @@ services:
 
   canismajor:
     build:
-      context: https://github.com/FIWARE-Blockchain/CanisMajor.git
+      context: https://github.com/fiware/CanisMajor.git
     container_name: fiware-canismajor
     hostname: canismajor
     depends_on: 
@@ -98,6 +98,7 @@ services:
       - IPFS_PORT=5001
       - IPFS_PROTOCOL=https
       # - IPFS_AUTH_CODE='' # IPFS Bearer ACCESS TOKEN (if needed)
+      - CM_SECRET='secret_key'
     healthcheck:
       interval: 5s
 

@@ -73,8 +73,7 @@ services:
 
   canismajor:
     build:
-      # context: https://github.com/FIWARE-Blockchain/CanisMajor.git
-      context: ../CanisMajor
+      context: https://github.com/fiware/CanisMajor.git
     container_name: fiware-canismajor
     hostname: canismajor
     depends_on: 
@@ -93,6 +92,7 @@ services:
       - AEI_CONTRACT_MODE=false
       - RPC_ENDPOINT=http://ganache-cli:8545
       - DEFAULT_GAS=3000000
+      - CM_SECRET='secret_key'
 
     healthcheck:
       interval: 5s

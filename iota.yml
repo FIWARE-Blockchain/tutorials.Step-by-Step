@@ -73,7 +73,7 @@ services:
 
   canismajor:
     build:
-      context: https://github.com/FIWARE-Blockchain/CanisMajor.git
+      context: https://github.com/fiware/CanisMajor.git
     container_name: fiware-canismajor
     hostname: canismajor
     depends_on: 
@@ -90,6 +90,7 @@ services:
       - DB_PASSWORD=secret
       - DLT_TYPE=iota
       - IOTA_ENDPOINT=https://nodes.devnet.iota.org:443
+      - CM_SECRET='secret_key'
     healthcheck:
       interval: 5s
 

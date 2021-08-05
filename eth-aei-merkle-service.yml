@@ -73,7 +73,7 @@ services:
 
   canismajor:
     build:
-      context: https://github.com/FIWARE-Blockchain/CanisMajor.git
+      context: https://github.com/fiware/CanisMajor.git
     container_name: fiware-canismajor
     hostname: canismajor
     depends_on: 
@@ -94,6 +94,7 @@ services:
       - DEFAULT_GAS=3000000
       - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
       - STORAGE_TYPE=merkletree
+      - CM_SECRET='secret_key'
 
     healthcheck:
       interval: 5s
